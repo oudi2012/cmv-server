@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycmv.server.mapper.banner.BannerInfoMapper">
+
+    <sql id="column">
+        id, cateCode, userId, title, cntType, target, srcUrl, state, orderNo, createDate
+    </sql>
+
+    <sql id="where">
+        <if test="cateCode != null">
+            and cateCode = #{cateCode}
+        </if>
+        <if test="userId != null">
+            and  userId = #{userId}
+        </if>
+    </sql>
+
+    <select id="list" resultType="com.mycmv.server.model.banner.entry.Banner">
+        select
+            <include refid="column" />
+        from sys_banner_info
+        <where>
+            <include refid="where" />
+        </where>
+    </select>
+
+    <select id="findById" resultType="com.mycmv.server.model.banner.entry.Banner">
+        select
+            <include refid="column" />
+        from sys_banner_info
+        <where>
+            id = #{id}
+        </where>
+    </select>
+
+    <update id="update" parameterType="com.mycmv.server.model.banner.entry.Banner">
+        update sys_banner_info
+        <set>
+            <if test="cateCode != null">  cateCode = #{cateCode}, </if>
+            <if test="userId != null">  userId = #{userId}, </if>
+            <if test="title != null">  title = #{title}, </if>
+            <if test="cntType != null">  cntType = #{cntType}, </if>
+            <if test="target != null">  target = #{target}, </if>
+            <if test="srcUrl != null">  srcUrl = #{srcUrl}, </if>
+            <if test="state != null">  state = #{state}, </if>
+            <if test="orderNo != null">  orderNo = #{orderNo}, </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <insert id="insert" parameterType="com.mycmv.server.model.banner.entry.Banner">
+        insert into sys_banner_info (cateCode, userId, title, cntType, target, srcUrl, state, orderNo, createDate)
+        values (#{cateCode}, #{userId}, #{title}, #{cntType}, #{target}, #{srcUrl}, #{state}, #{orderNo}, UNIX_TIMESTAMP())
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        <foreach collection="list" index="index" item="item" separator=";">
+            insert into sys_banner_info (cateCode, userId, title, cntType, target, srcUrl, state, orderNo, createDate)
+            values (#{item.cateCode}, #{item.userId}, #{item.title}, #{item.cntType}, #{item.target}, #{item.srcUrl}, #{item.state}, #{item.orderNo}, UNIX_TIMESTAMP())
+        </foreach>
+    </insert>
+
+    <delete id="delete" parameterType="java.util.List">
+        delete from sys_banner_info where id in (
+        <foreach collection="idList" index="index" item="item" separator=",">
+            #{item}
+        </foreach>)
+    </delete>
+
+</mapper>

@@ -1,4 +1,4 @@
-package com.mycmv.server.model.banner;
+package com.mycmv.server.model.banner.entry;
 
 import lombok.Data;
 
@@ -18,4 +18,18 @@ import lombok.Data;
  */
 @Data
 public class Banner {
+    private Long id;
+    private String cateCode;
+    private Long userId;
+    private String title;
+    /** 内容类型 */
+    private String cntType;
+    /** 目标 */
+    private String target;
+    /** 地址 */
+    private String srcUrl;
+    /** 状态 */
+    private Integer state;
+    private Integer orderNo;
+    private Integer createDate;
 }
