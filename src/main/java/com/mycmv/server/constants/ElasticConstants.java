@@ -6,6 +6,8 @@ package com.mycmv.server.constants;
  */
 public class ElasticConstants {
 
+
+
     /**
      * 集群名字
      */
