@@ -54,7 +54,6 @@ public class ElasticServiceImpl<T> implements ElasticService<T> {
             CreateIndexRequest request = new CreateIndexRequest(idxName);
             buildSetting(request);
             request.mapping(idxSql, XContentType.JSON);
-            //request.settings() 手工指定Setting
             CreateIndexResponse res = restHighLevelClient.indices().create(request, RequestOptions.DEFAULT);
             if (!res.isAcknowledged()) {
                 throw new BusinessException("初始化失败");
@@ -81,7 +80,6 @@ public class ElasticServiceImpl<T> implements ElasticService<T> {
         logger.error("Data : id={},entity={}",elastic.getId(), JSON.toJSONString(elastic.getData()));
         request.id(elastic.getId());
         request.source(elastic.getData(), XContentType.JSON);
-        //request.source(JSON.toJSONString(entity.getData()), XContentType.JSON);
         try {
             restHighLevelClient.index(request, RequestOptions.DEFAULT);
         } catch (Exception e) {
