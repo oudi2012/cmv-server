@@ -1,6 +1,8 @@
 package com.mycmv.server.model.books.entry;
 
+import com.mycmv.server.model.ElasticInfo;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -12,8 +14,9 @@ import static com.mycmv.server.constants.CmvConstants.ES_ANALYZER_01;
  * @author oudi
  *
  */
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class BookInfo implements java.io.Serializable{
+public class BookInfo extends ElasticInfo {
 
 	@Id
 	private Long bookId;
