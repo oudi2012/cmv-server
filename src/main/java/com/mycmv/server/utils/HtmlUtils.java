@@ -1,6 +1,6 @@
 package com.mycmv.server.utils;
 
-import com.mycmv.server.model.books.wyw.entry.ArticleInfo;
+import com.mycmv.server.model.article.entry.ArticleInfo;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -57,13 +57,13 @@ public class HtmlUtils {
             //System.out.println(document.toString());
             Element typeCont = document.getElementById(contsonId);
             if (typeCont != null) {
-                articleInfo.setCont(typeCont.html()
+                articleInfo.setContent(typeCont.html()
                         .replaceAll("<p>","")
                         .replaceAll("</p>","")
                         .replaceAll("<br>","")
                         .trim());
             }
-            System.out.println(articleInfo.getCont());
+            System.out.println(articleInfo.getContent());
         } catch (IOException io) {
             io.printStackTrace();
         }

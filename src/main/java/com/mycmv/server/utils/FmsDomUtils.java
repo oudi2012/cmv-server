@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class FmsDomUtils {
 
-    private static Logger logger = LoggerFactory.getLogger(FmsDomUtils.class);
+    private static final Logger logger = LoggerFactory.getLogger(FmsDomUtils.class);
 
     public static Document getDocument(String xmlPath) {
         SAXReader saxReader = new SAXReader();

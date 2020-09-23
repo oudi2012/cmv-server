@@ -1,9 +1,9 @@
-package com.mycmv.server.model.books.wyw.entry;
+package com.mycmv.server.model.article.entry;
 
 import lombok.Data;
 
 @Data
-public class Style {
+public class Dynasty {
     private Integer id;
     private String name;
     private Integer orderNo;

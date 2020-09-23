@@ -25,4 +25,6 @@ public class ArticleInfo {
     private Integer totalZan;
     /** 评论条数 */
     private Integer totalComment;
+    private String href;
+    private String author;
 }
