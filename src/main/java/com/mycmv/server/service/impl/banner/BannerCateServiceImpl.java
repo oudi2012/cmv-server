@@ -18,42 +18,42 @@ import java.util.List;
 public class BannerCateServiceImpl implements BannerCateService {
 
     @Resource
-    private BannerCateMapper bannerInfoMapper;
+    private BannerCateMapper bannerCateMapper;
 
     @Override
     public List<BannerCate> list(BannerCate t) {
-        return bannerInfoMapper.list(t);
+        return bannerCateMapper.list(t);
     }
 
     @Override
     public BannerCate findById(int bookId) {
-        return bannerInfoMapper.findById(bookId);
+        return bannerCateMapper.findById(bookId);
     }
 
     @Override
     public void insert(BannerCate item) {
-        bannerInfoMapper.insert(item);
+        bannerCateMapper.insert(item);
     }
 
     @Override
     public void update(BannerCate item) {
-        bannerInfoMapper.update(item);
+        bannerCateMapper.update(item);
     }
 
     @Override
     public void batchInsert(List<BannerCate> list) {
-        bannerInfoMapper.batchInsert(list);
+        bannerCateMapper.batchInsert(list);
     }
 
     @Override
     public int delete(List<Long> idList) {
-        return bannerInfoMapper.delete(idList);
+        return bannerCateMapper.delete(idList);
     }
 
     @Override
     public PageInfo<BannerCate> pageList(BannerCate t, int pageIndex, int pageSize) {
         PageHelper.startPage(pageIndex, pageSize);
-        List<BannerCate> list = bannerInfoMapper.list(t);
+        List<BannerCate> list = bannerCateMapper.list(t);
         if (CollectionUtils.isEmpty(list)) {
             return new PageInfo<>();
         }

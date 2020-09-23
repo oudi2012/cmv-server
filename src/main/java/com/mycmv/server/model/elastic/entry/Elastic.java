@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Elastic<T> {
+public class Elastic {
 
     /**
      * 主键标识，用户ES持久化
@@ -20,6 +20,6 @@ public class Elastic<T> {
     /**
      * JSON对象，实际存储数据
      */
-    private T data;
+    private Object data;
 
 }

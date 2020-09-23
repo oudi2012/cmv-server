@@ -1,7 +1,7 @@
 package com.mycmv.server.mapper.banner;
 
-import com.mycmv.server.model.banner.entry.Banner;
 import com.mycmv.server.model.banner.entry.BannerCate;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,6 +10,7 @@ import java.util.List;
  * ClassInfo
  * @author oudi
  */
+@Mapper
 public interface BannerCateMapper {
 
     /***

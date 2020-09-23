@@ -23,7 +23,7 @@
 		<json-lib.version>2.4</json-lib.version>
 		<fastjson.version>1.2.70</fastjson.version>
 		<servlet-api.version>3.1.0</servlet-api.version>
-		<elastic.version>7.4.0</elastic.version>
+		<elastic.version>7.9.1</elastic.version>
 	</properties>
 
 	<dependencies>
@@ -92,6 +92,11 @@
 			<groupId>redis.clients</groupId>
 			<artifactId>jedis</artifactId>
 			<version>3.1.0</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
 		</dependency>
 
 		<dependency>
