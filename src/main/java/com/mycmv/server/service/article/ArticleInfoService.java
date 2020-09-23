@@ -1,7 +1,7 @@
-package com.mycmv.server.service.book;
+package com.mycmv.server.service.article;
 
-import com.mycmv.server.model.books.entry.BookInfo;
 import com.github.pagehelper.PageInfo;
+import com.mycmv.server.model.article.entry.ArticleInfo;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * 课本接口
  * @author oudi
  */
-public interface BookInfoService {
+public interface ArticleInfoService {
 
     /***
      * 分页显示
@@ -18,39 +18,39 @@ public interface BookInfoService {
      * @param pageSize pageSize
      * @return PageInfo
      */
-    PageInfo<BookInfo> pageList(BookInfo item, int pageIndex, int pageSize);
+    PageInfo<ArticleInfo> pageList(ArticleInfo item, int pageIndex, int pageSize);
 
     /***
      * 列表
      * @param item item
      * @return
      */
-    List<BookInfo> list(BookInfo item);
+    List<ArticleInfo> list(ArticleInfo item);
 
     /***
      * 详细
      * @param bookId id
      * @return obj
      */
-    BookInfo findById(int bookId);
+    ArticleInfo findById(int bookId);
 
     /***
      * 添加
      * @param item item
      */
-    void insert(BookInfo item);
+    void insert(ArticleInfo item);
 
     /***
      * 编辑
      * @param item item
      */
-    void update(BookInfo item);
+    void update(ArticleInfo item);
 
     /***
      * 批量添加
      * @param list list
      */
-    void batchInsert(List<BookInfo> list);
+    void batchInsert(List<ArticleInfo> list);
 
     /***
      * 删除

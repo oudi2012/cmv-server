@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycmv.server.mapper.article.ArticleInfoMapper">
+
+    <sql id="column">
+        id, author, userId, grade, dynasty, cateId, styleId, tags, title, content, createDate, href
+    </sql>
+
+    <sql id="where">
+        <if test="author != null">
+            and author = #{author}
+        </if>
+        <if test="userId != null">
+            and userId = #{userId}
+        </if>
+        <if test="grade != null">
+            and grade = #{grade}
+        </if>
+        <if test="dynasty != null and dynasty != 0">
+            and dynasty = #{dynasty}
+        </if>
+        <if test="cateId != null">
+            and cateId = #{cateId}
+        </if>
+        <if test="styleId != null">
+            and styleId = #{styleId}
+        </if>
+        <if test="title != null and !title.equals('')">
+            and title like contact('%', #{title}, '%')
+        </if>
+    </sql>
+
+    <select id="list" resultType="com.mycmv.server.model.article.entry.ArticleInfo">
+        select
+            <include refid="column" />
+        from info_articleInfo
+        <where>
+            <include refid="where" />
+        </where>
+    </select>
+
+    <select id="findById" resultType="com.mycmv.server.model.article.entry.ArticleInfo">
+        select
+            <include refid="column" />
+        from info_articleInfo
+        <where>
+            bookId = #{bookId}
+        </where>
+    </select>
+
+    <insert id="insert" parameterType="com.mycmv.server.model.article.entry.ArticleInfo">
+        insert into info_articleInfo (author, userId, grade, dynasty, cateId, styleId, tags, title, content, createDate, href)
+        values (#{author}, #{userId}, #{grade}, #{dynasty}, #{cateId}, #{styleId}, #{tags}, #{title}, #{content}, #{createDate}, #{href})
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        <foreach collection="list" index="index" item="item" separator=";">
+            insert into info_articleInfo (author, userId, grade, dynasty, cateId, styleId, tags, title, content, createDate, href)
+            values (#{item.author}, #{item.userId}, #{item.grade}, #{item.dynasty}, #{item.cateId}, #{item.styleId}, #{item.tags}, #{item.title}, #{item.content}, #{item.createDate}, #{item.href})
+        </foreach>
+    </insert>
+
+    <update id="update" parameterType="com.mycmv.server.model.article.entry.ArticleInfo">
+        update info_articleInfo
+        <set>
+            <if test="author != null">  author = #{author}, </if>
+            <if test="grade != null">  grade = #{grade}, </if>
+            <if test="userId != null">  userId = #{userId}, </if>
+            <if test="dynasty != null">  dynasty = #{dynasty}, </if>
+            <if test="cateId != null">  cateId = #{cateId}, </if>
+            <if test="styleId != null">  styleId = #{styleId}, </if>
+            <if test="tags != null">  tags = #{tags}, </if>
+            <if test="title != null">  title = #{title}, </if>
+            <if test="createDate != null">  createDate = #{createDate}, </if>
+            <if test="href != null">  href = #{href}, </if>
+        </set>
+        <where>
+            id = #{id}
+        </where>
+    </update>
+
+    <delete id="delete" parameterType="java.util.List">
+        delete from info_articleInfo where id in (
+        <foreach collection="idList" index="index" item="item" separator=",">
+            #{item}
+        </foreach>)
+    </delete>
+
+</mapper>
