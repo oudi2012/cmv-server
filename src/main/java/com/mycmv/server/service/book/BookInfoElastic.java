@@ -52,4 +52,11 @@ public interface BookInfoElastic {
      */
     int delete(List<BookInfoEs> list);
 
+    /***
+     * deleteByIds
+     * @param ids ids
+     * @return int
+     */
+    int deleteByIds(List<Long> ids);
+
 }

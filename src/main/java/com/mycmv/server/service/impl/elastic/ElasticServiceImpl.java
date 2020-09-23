@@ -61,6 +61,14 @@ public class ElasticServiceImpl<T> implements ElasticService<T> {
     }
 
     @Override
+    public int deleteByIds(List<Long> ids) {
+        for (Long id : ids) {
+            elasticsearchRepository.deleteById(id);
+        }
+        return ids.size();
+    }
+
+    @Override
     public Page<T> search(QueryBuilder builder, Pageable pageable) {
         return elasticsearchRepository.search(builder, pageable);
     }

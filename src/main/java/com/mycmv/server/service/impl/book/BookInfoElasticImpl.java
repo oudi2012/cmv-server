@@ -66,4 +66,9 @@ public class BookInfoElasticImpl implements BookInfoElastic {
     public int delete(List<BookInfoEs> list) {
         return elasticService.deleteBatch(list);
     }
+
+    @Override
+    public int deleteByIds(List<Long> ids) {
+        return elasticService.deleteByIds(ids);
+    }
 }

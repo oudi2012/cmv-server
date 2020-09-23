@@ -43,6 +43,13 @@ public interface ElasticService<T> {
      */
     int deleteBatch(List<T> list);
 
+    /***
+     * deleteByIds
+     * @param ids ids
+     * @return int
+     */
+    int deleteByIds(List<Long> ids);
+
     /**
      * search
      * @param builder builder
