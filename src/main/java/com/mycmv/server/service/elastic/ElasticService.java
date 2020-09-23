@@ -1,77 +1,65 @@
 package com.mycmv.server.service.elastic;
 
-import com.mycmv.server.model.elastic.entry.Elastic;
-import org.elasticsearch.client.indices.CreateIndexRequest;
 import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import java.util.List;
 
 /***
  * @author a
  */
-public interface ElasticService {
+public interface ElasticService<T> {
 
     /**
      * 创建索引
      * @param clazz clazz
      */
-    void createIndex(Class<?> clazz);
+    void createIndex(Class<T> clazz);
 
     /***
      * 判断索引是否存在
-     * @param idxName idxName
+     * @param clazz clazz
      * @return boolean
-     * @throws Exception Exception
      */
-    boolean isExistsIndex(String idxName) throws Exception;
-
-    /***
-     * 设置分片
-     * @param request request
-     */
-    void buildSetting(CreateIndexRequest request);
+    boolean isExistsIndex(Class<T> clazz);
 
     /***
      * insertOrUpdateOne
-     * @param idxName idxName
-     * @param elastic elastic
+     * @param t t
      */
-    void insertOrUpdateOne(String idxName, Elastic elastic);
+    void insertOrUpdateOne(T t);
 
     /***
      * insertBatch
-     * @param idxName idxName
      * @param list list
      */
-    void insertBatch(String idxName, List<Elastic> list);
+    void insertBatch(List<T> list);
 
     /***
      * deleteBatch
-     * @param idxName idxName
-     * @param idList idList
+     * @param list list
      */
-    void deleteBatch(String idxName, List<Long> idList);
+    void deleteBatch(List<T> list);
 
     /**
      * search
-     * @param idxName idxName
      * @param builder builder
-     * @param clazz clazz
-     * @return List
+     * @param pageable pageable
+     * @return Page
      */
-    <T> List<T> search(String idxName, SearchSourceBuilder builder, Class<T> clazz);
+    Page<T> search(QueryBuilder builder, Pageable pageable);
 
     /***
      * deleteIndex
-     * @param idxName idxName
+     * @param clazz clazz
      */
-    void deleteIndex(String idxName);
+    void deleteIndex(Class<T> clazz);
 
     /***
      * deleteByQuery
-     * @param idxName idxName
-     * @param builder builder
+     * @param item item
      */
-    void deleteByQuery(String idxName, QueryBuilder builder);
+    void delete(T item);
 
 }
