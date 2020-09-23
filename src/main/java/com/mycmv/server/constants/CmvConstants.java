@@ -25,4 +25,6 @@ public class CmvConstants {
     public static final String PROVINCE = "province";
     public static final String CITY = "city";
     public static final String TOWN = "town";
+
+    public static final String ES_ANALYZER_01 = "ik_max_word";
 }

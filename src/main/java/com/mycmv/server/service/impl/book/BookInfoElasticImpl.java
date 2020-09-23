@@ -2,11 +2,10 @@ package com.mycmv.server.service.impl.book;
 
 import com.github.pagehelper.PageInfo;
 import com.mycmv.server.model.books.elastic.BookInfoEs;
+import com.mycmv.server.model.books.elastic.BookInfoEsQuery;
 import com.mycmv.server.service.book.BookInfoElastic;
 import com.mycmv.server.service.elastic.ElasticService;
-import org.elasticsearch.index.query.BoolQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
+import org.springframework.beans.BeanUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -29,9 +28,10 @@ public class BookInfoElasticImpl implements BookInfoElastic {
     @Override
     public PageInfo<BookInfoEs> pageList(BookInfoEs item, int pageIndex, int pageSize) {
         PageInfo<BookInfoEs> pageInfo = new PageInfo<>();
-        BoolQueryBuilder queryBuilder = QueryBuilders.boolQuery();
+        BookInfoEsQuery bookInfoEsQuery = new BookInfoEsQuery();
+        BeanUtils.copyProperties(item, bookInfoEsQuery);
         Pageable pageable = PageRequest.of(pageIndex, pageSize);
-        Page<BookInfoEs> bookInfoEsPage = elasticService.search(queryBuilder, pageable);
+        Page<BookInfoEs> bookInfoEsPage = elasticService.search(bookInfoEsQuery.getBookInfoEsQuery(), pageable);
         if (!CollectionUtils.isEmpty(bookInfoEsPage.getContent())) {
             pageInfo.setTotal(bookInfoEsPage.getTotalElements());
             pageInfo.setList(bookInfoEsPage.getContent());
@@ -44,31 +44,26 @@ public class BookInfoElasticImpl implements BookInfoElastic {
 
     @Override
     public List<BookInfoEs> list(BookInfoEs item) {
-        return null;
-    }
-
-    @Override
-    public BookInfoEs findById(int bookId) {
-        return null;
+        return pageList(item, 1, 20).getList();
     }
 
     @Override
     public void insert(BookInfoEs item) {
-
+        elasticService.insertOrUpdateOne(item);
     }
 
     @Override
     public void update(BookInfoEs item) {
-
+        elasticService.insertOrUpdateOne(item);
     }
 
     @Override
     public void batchInsert(List<BookInfoEs> list) {
-
+        elasticService.insertBatch(list);
     }
 
     @Override
-    public int delete(List<Long> idList) {
-        return 0;
+    public int delete(List<BookInfoEs> list) {
+        return elasticService.deleteBatch(list);
     }
 }

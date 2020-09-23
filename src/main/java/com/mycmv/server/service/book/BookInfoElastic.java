@@ -28,13 +28,6 @@ public interface BookInfoElastic {
     List<BookInfoEs> list(BookInfoEs item);
 
     /***
-     * 详细
-     * @param bookId id
-     * @return obj
-     */
-    BookInfoEs findById(int bookId);
-
-    /***
      * 添加
      * @param item item
      */
@@ -54,9 +47,9 @@ public interface BookInfoElastic {
 
     /***
      * 删除
-     * @param idList idList
+     * @param list list
      * @return int
      */
-    int delete(List<Long> idList);
+    int delete(List<BookInfoEs> list);
 
 }

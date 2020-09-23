@@ -5,6 +5,8 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+import static com.mycmv.server.constants.CmvConstants.ES_ANALYZER_01;
+
 /***
  * 书籍基类
  * @author oudi
@@ -16,13 +18,13 @@ public class BookInfo implements java.io.Serializable{
 	@Id
 	private Long bookId;
 	/** 书名 */
-	@Field(type = FieldType.Text, analyzer = "ik_max_word")
+	@Field(type = FieldType.Text, analyzer = ES_ANALYZER_01)
 	private  String bookName;
 	/** 简称 */
-	@Field(type = FieldType.Text, analyzer = "ik_max_word")
+	@Field(type = FieldType.Text, analyzer = ES_ANALYZER_01)
 	private  String shortName;
 	/** 拼音 */
-	@Field(type = FieldType.Text, analyzer = "ik_max_word")
+	@Field(type = FieldType.Text, analyzer = ES_ANALYZER_01)
 	private  String pinYin;
 	/** 出版社 */
 	@Field(type = FieldType.Integer)

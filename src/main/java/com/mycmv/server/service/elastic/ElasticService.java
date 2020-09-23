@@ -39,8 +39,9 @@ public interface ElasticService<T> {
     /***
      * deleteBatch
      * @param list list
+     * @return int
      */
-    void deleteBatch(List<T> list);
+    int deleteBatch(List<T> list);
 
     /**
      * search

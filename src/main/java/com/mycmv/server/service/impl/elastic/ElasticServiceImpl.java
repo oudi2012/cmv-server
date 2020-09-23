@@ -55,8 +55,9 @@ public class ElasticServiceImpl<T> implements ElasticService<T> {
     }
 
     @Override
-    public void deleteBatch(List<T> list) {
+    public int deleteBatch(List<T> list) {
         elasticsearchRepository.deleteAll(list);
+        return list.size();
     }
 
     @Override
