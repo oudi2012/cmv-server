@@ -1,5 +1,6 @@
 package com.mycmv.server.service.book;
 
+import com.mycmv.server.model.books.elastic.BookInfoEs;
 import com.mycmv.server.model.books.entry.BookInfo;
 import com.github.pagehelper.PageInfo;
 
@@ -19,6 +20,15 @@ public interface BookInfoService {
      * @return PageInfo
      */
     PageInfo<BookInfo> pageList(BookInfo item, int pageIndex, int pageSize);
+
+    /***
+     * 分页显示
+     * @param item item
+     * @param pageIndex pageIndex
+     * @param pageSize pageSize
+     * @return PageInfo
+     */
+    PageInfo<BookInfoEs> pageListEs(BookInfo item, int pageIndex, int pageSize);
 
     /***
      * 列表

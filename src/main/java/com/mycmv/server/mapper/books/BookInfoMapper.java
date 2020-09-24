@@ -14,10 +14,10 @@ public interface BookInfoMapper {
 
     /***
      * 列表
-     * @param t t
+     * @param item item
      * @return List
      */
-    List<BookInfo> list(BookInfo t);
+    List<BookInfo> list(BookInfo item);
 
     /***
      * 详细

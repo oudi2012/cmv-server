@@ -5,7 +5,7 @@ import com.mycmv.server.mapper.exam.PaperQuestionMapper;
 import com.mycmv.server.model.exam.entry.PaperQuestion;
 import com.mycmv.server.service.exam.AbstractExamService;
 import com.mycmv.server.service.exam.PaperQuestionService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 
@@ -16,7 +16,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PaperQuestionServiceImpl extends AbstractExamService<PaperQuestion> implements PaperQuestionService {
 
-    @Autowired
+    @Resource
     private PaperQuestionMapper pageQuestionMapper;
 
     @Override

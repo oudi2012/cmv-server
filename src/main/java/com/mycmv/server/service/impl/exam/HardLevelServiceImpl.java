@@ -5,7 +5,7 @@ import com.mycmv.server.mapper.exam.HardLevelMapper;
 import com.mycmv.server.model.exam.entry.HardLevel;
 import com.mycmv.server.service.exam.AbstractExamService;
 import com.mycmv.server.service.exam.HardLevelService;
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 
 /***
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class HardLevelServiceImpl extends AbstractExamService<HardLevel> implements HardLevelService {
 
-    @Autowired
+    @Resource
     private HardLevelMapper hardLevelMapper;
 
     @Override
