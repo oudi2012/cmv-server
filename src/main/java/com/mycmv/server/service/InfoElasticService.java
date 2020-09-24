@@ -1,5 +1,6 @@
-package com.mycmv.server.service.elastic;
+package com.mycmv.server.service;
 
+import com.mycmv.server.model.ElasticInfo;
 import org.elasticsearch.index.query.QueryBuilder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -9,7 +10,7 @@ import java.util.List;
 /***
  * @author a
  */
-public interface ElasticService<T> {
+public interface InfoElasticService<T extends ElasticInfo> {
 
     /**
      * 创建索引
@@ -52,11 +53,11 @@ public interface ElasticService<T> {
 
     /**
      * search
-     * @param builder builder
+     * @param item item
      * @param pageable pageable
      * @return Page
      */
-    Page<T> search(QueryBuilder builder, Pageable pageable);
+    Page<T> search(T item, Pageable pageable);
 
     /***
      * deleteIndex
