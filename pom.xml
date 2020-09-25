@@ -149,6 +149,7 @@
 			<version>${json-lib.version}</version>
 			<classifier>jdk15</classifier>
 		</dependency>
+		<!-- 分页插件 -->
 		<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper-spring-boot-starter</artifactId>

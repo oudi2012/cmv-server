@@ -37,7 +37,6 @@
         <where>
             <include refid="where" />
         </where>
-        order by bookId desc
     </select>
 
     <select id="findById" resultType="com.mycmv.server.model.books.entry.BookInfo">

@@ -55,9 +55,9 @@ public class BookServiceImpl implements BookInfoService {
     }
 
     @Override
-    public PageInfo<BookInfo> pageList(BookInfo t, int pageIndex, int pageSize) {
+    public PageInfo<BookInfo> pageList(BookInfo item, int pageIndex, int pageSize) {
         PageHelper.startPage(pageIndex, pageSize);
-        List<BookInfo> list = bookInfoMapper.list(t);
+        List<BookInfo> list = bookInfoMapper.list(item);
         if (CollectionUtils.isEmpty(list)) {
             return new PageInfo<>();
         }
@@ -66,7 +66,7 @@ public class BookServiceImpl implements BookInfoService {
 
     @Override
     public PageInfo<BookInfoEs> pageListEs(BookInfo item, int pageIndex, int pageSize) {
-        PageHelper.startPage(pageIndex, pageSize);
+        PageHelper.startPage(pageIndex, pageSize).setOrderBy(" bookId desc ");
         List<BookInfo> list = bookInfoMapper.list(item);
         if (CollectionUtils.isEmpty(list)) {
             return new PageInfo<>();
