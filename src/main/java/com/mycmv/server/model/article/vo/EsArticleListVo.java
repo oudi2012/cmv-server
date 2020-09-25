@@ -1,4 +1,4 @@
-package com.mycmv.server.model.books.vo;
+package com.mycmv.server.model.article.vo;
 
 import com.mycmv.server.model.article.elastic.ArticleInfoEs;
 import lombok.Data;
