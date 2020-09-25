@@ -53,7 +53,7 @@ public class ArticleServiceImpl implements ArticleInfoService {
 
     @Override
     public PageInfo<ArticleInfo> pageList(ArticleInfo t, int pageIndex, int pageSize) {
-        PageHelper.startPage(pageIndex, pageSize);
+        PageHelper.startPage(pageIndex, pageSize).setOrderBy(" id desc ");
         List<ArticleInfo> list = articleInfoMapper.list(t);
         if (CollectionUtils.isEmpty(list)) {
             return new PageInfo<>();
