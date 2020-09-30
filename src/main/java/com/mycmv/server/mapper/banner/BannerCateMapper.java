@@ -15,9 +15,17 @@ public interface BannerCateMapper {
 
     /***
      * 列表
+     * @param item item
      * @return List
      */
-    List<BannerCate> list(BannerCate t);
+    List<BannerCate> list(BannerCate item);
+
+    /***
+     * 根据类别编号，获取类型
+     * @param cateCodes cateCodes
+     * @return List
+     */
+    List<BannerCate> listByCodes(@Param("cateCodes") List<String> cateCodes);
 
     /***
      * 详细

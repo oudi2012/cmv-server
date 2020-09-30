@@ -24,6 +24,18 @@
         </where>
     </select>
 
+    <select id="listByCodes" parameterType="List" resultType="com.mycmv.server.model.banner.entry.BannerCate">
+        select
+        <include refid="column" />
+        from sys_banner_cate
+        <where>
+            cateCode in
+            <foreach collection="cateCodes" separator="," item="item" open="(" close=")">
+            #{item}
+            </foreach>
+        </where>
+    </select>
+
     <select id="findById" resultType="com.mycmv.server.model.banner.entry.BannerCate">
         select
             <include refid="column" />

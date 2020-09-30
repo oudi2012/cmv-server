@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /***
  * @author a
@@ -21,8 +25,22 @@ public class BannerCateServiceImpl implements BannerCateService {
     private BannerCateMapper bannerCateMapper;
 
     @Override
-    public List<BannerCate> list(BannerCate t) {
-        return bannerCateMapper.list(t);
+    public List<BannerCate> list(BannerCate item) {
+        return bannerCateMapper.list(item);
+    }
+
+    @Override
+    public List<BannerCate> listByCodes(List<String> cateCodes) {
+        return bannerCateMapper.listByCodes(cateCodes);
+    }
+
+    @Override
+    public Map<String, BannerCate> mapByCodes(List<String> cateCodes) {
+        List<BannerCate> bannerCateList = listByCodes(cateCodes);
+        if (CollectionUtils.isEmpty(bannerCateList)) {
+            return new HashMap<>(0);
+        }
+        return bannerCateList.stream().collect(Collectors.toMap(BannerCate::getCateCode, Function.identity()));
     }
 
     @Override

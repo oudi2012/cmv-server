@@ -16,6 +16,15 @@ public enum BannerType {
         this.title = title;
     }
 
+    public static String getTitleByCode(String code) {
+        for (BannerType bannerType : BannerType.values()) {
+            if (bannerType.code.equals(code)) {
+                return bannerType.title;
+            }
+        }
+        return null;
+    }
+
     public String getCode() {
         return code;
     }

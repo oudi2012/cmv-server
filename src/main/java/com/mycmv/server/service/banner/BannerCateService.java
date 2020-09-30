@@ -4,6 +4,7 @@ import com.github.pagehelper.PageInfo;
 import com.mycmv.server.model.banner.entry.BannerCate;
 
 import java.util.List;
+import java.util.Map;
 
 /***
  * 课本接口
@@ -13,19 +14,33 @@ public interface BannerCateService {
 
     /***
      * 分页显示
-     * @param t t
+     * @param item item
      * @param pageIndex pageIndex
      * @param pageSize pageSize
      * @return PageInfo
      */
-    PageInfo<BannerCate> pageList(BannerCate t, int pageIndex, int pageSize);
+    PageInfo<BannerCate> pageList(BannerCate item, int pageIndex, int pageSize);
 
     /***
      * 列表
-     * @param t t
-     * @return
+     * @param item item
+     * @return List
      */
-    List<BannerCate> list(BannerCate t);
+    List<BannerCate> list(BannerCate item);
+
+    /***
+     * 根据类别编号，获取类型
+     * @param cateCodes cateCodes
+     * @return List
+     */
+    List<BannerCate> listByCodes(List<String> cateCodes);
+
+    /***
+     * 根据类别编号，获取类型
+     * @param cateCodes cateCodes
+     * @return Map
+     */
+    Map<String, BannerCate> mapByCodes(List<String> cateCodes);
 
     /***
      * 详细

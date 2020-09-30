@@ -3,12 +3,15 @@
 <mapper namespace="com.mycmv.server.mapper.banner.BannerInfoMapper">
 
     <sql id="column">
-        id, cateCode, userId, title, cntType, target, srcUrl, state, orderNo, createDate
+        id, cateCode, userId, title, cntType, target, href, srcUrl, state, orderNo, createDate
     </sql>
 
     <sql id="where">
         <if test="cateCode != null">
             and cateCode = #{cateCode}
+        </if>
+        <if test="title != null and !title.equals('')">
+            and title like contact('%', #{title}, '%')
         </if>
         <if test="userId != null">
             and  userId = #{userId}
@@ -41,6 +44,7 @@
             <if test="title != null">  title = #{title}, </if>
             <if test="cntType != null">  cntType = #{cntType}, </if>
             <if test="target != null">  target = #{target}, </if>
+            <if test="href != null">  href = #{href}, </if>
             <if test="srcUrl != null">  srcUrl = #{srcUrl}, </if>
             <if test="state != null">  state = #{state}, </if>
             <if test="orderNo != null">  orderNo = #{orderNo}, </if>
@@ -51,14 +55,14 @@
     </update>
 
     <insert id="insert" parameterType="com.mycmv.server.model.banner.entry.Banner">
-        insert into sys_banner_info (cateCode, userId, title, cntType, target, srcUrl, state, orderNo, createDate)
-        values (#{cateCode}, #{userId}, #{title}, #{cntType}, #{target}, #{srcUrl}, #{state}, #{orderNo}, UNIX_TIMESTAMP())
+        insert into sys_banner_info (cateCode, userId, title, cntType, href, target, srcUrl, state, orderNo, createDate)
+        values (#{cateCode}, #{userId}, #{title}, #{cntType}, #{href}, #{target}, #{srcUrl}, #{state}, #{orderNo}, UNIX_TIMESTAMP())
     </insert>
 
     <insert id="batchInsert" parameterType="java.util.List">
         <foreach collection="list" index="index" item="item" separator=";">
-            insert into sys_banner_info (cateCode, userId, title, cntType, target, srcUrl, state, orderNo, createDate)
-            values (#{item.cateCode}, #{item.userId}, #{item.title}, #{item.cntType}, #{item.target}, #{item.srcUrl}, #{item.state}, #{item.orderNo}, UNIX_TIMESTAMP())
+            insert into sys_banner_info (cateCode, userId, title, cntType, href, target, srcUrl, state, orderNo, createDate)
+            values (#{item.cateCode}, #{item.userId}, #{item.title}, #{item.cntType}, #{item.href}, #{item.target}, #{item.srcUrl}, #{item.state}, #{item.orderNo}, UNIX_TIMESTAMP())
         </foreach>
     </insert>
 
