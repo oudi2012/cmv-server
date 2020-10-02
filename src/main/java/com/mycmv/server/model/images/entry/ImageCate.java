@@ -4,8 +4,8 @@ import lombok.Data;
 
 /**
  * 图片业务类型
- * @Author wanghaikuo
- * @Date 2020/6/26
+ * @author wanghaikuo
+ * @date 2020/6/26
  **/
 @Data
 public class ImageCate {

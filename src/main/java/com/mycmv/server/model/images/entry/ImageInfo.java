@@ -6,8 +6,8 @@ import java.util.Date;
 
 /**
  * 图片信息
- * @Author wanghaikuo
- * @Date 2020/6/25
+ * @author wanghaikuo
+ * @date 2020/6/25
  **/
 @Data
 public class ImageInfo {
