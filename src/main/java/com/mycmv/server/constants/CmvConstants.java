@@ -1,5 +1,7 @@
 package com.mycmv.server.constants;
 
+import java.text.SimpleDateFormat;
+
 /***
  * 常量
  * @author a
@@ -27,4 +29,6 @@ public class CmvConstants {
     public static final String TOWN = "town";
 
     public static final String ES_ANALYZER_01 = "ik_max_word";
+
+    public static final SimpleDateFormat YYYY_MM_DD = new SimpleDateFormat("yyyy-MM-dd");
 }

@@ -40,6 +40,13 @@ public interface AdminInfoMapper {
     List<AdminInfo> listByUserNameList(@Param("list") List<String> list);
 
     /***
+     * 列表
+     * @param list list
+     * @return List
+     */
+    List<AdminInfo> listByUserIdList(@Param("list") List<Long> list);
+
+    /***
      * 编辑
      * @param item item
      * @return int

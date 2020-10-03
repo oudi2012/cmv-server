@@ -12,27 +12,36 @@ import java.io.InputStream;
  */
 public interface ImageService {
 
+
+    /***
+     * 上传图片
+     * @param file file
+     * @return String
+     * @throws IOException IOException
+     */
+    String uploadImage(File file);
+
     /***
      * 读取图片
-     * @param file
-     * @return
-     * @throws IOException
+     * @param file file
+     * @return BufferedImage
+     * @throws IOException IOException
      */
     BufferedImage readImage(File file) throws IOException;
 
     /***
      * 读取图片
-     * @param stream
-     * @return
-     * @throws IOException
+     * @param stream stream
+     * @return BufferedImage
+     * @throws IOException IOException
      */
     BufferedImage readImage(InputStream stream) throws IOException;
 
     /***
      * 读取图片
-     * @param input
-     * @return
-     * @throws IOException
+     * @param input input
+     * @return BufferedImage
+     * @throws IOException IOException
      */
     BufferedImage readImage(ImageInputStream input) throws IOException;
 }

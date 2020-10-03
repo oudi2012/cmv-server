@@ -42,6 +42,18 @@
         </where>
     </select>
 
+    <select id="listByUserIdList" parameterType="java.util.List" resultType="com.mycmv.server.model.admin.entry.AdminInfo">
+        select
+        <include refid="column" />
+        from adm_user_info
+        <where>
+            id in (
+            <foreach collection="list" index="index" item="item" separator=",">
+                #{item}
+            </foreach>)
+        </where>
+    </select>
+
     <select id="findById" resultType="com.mycmv.server.model.admin.entry.AdminInfo">
         select
             <include refid="column" />

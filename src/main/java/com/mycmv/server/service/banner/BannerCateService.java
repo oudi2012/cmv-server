@@ -2,6 +2,7 @@ package com.mycmv.server.service.banner;
 
 import com.github.pagehelper.PageInfo;
 import com.mycmv.server.model.banner.entry.BannerCate;
+import com.mycmv.server.model.banner.vo.BannerCateVo;
 
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,15 @@ public interface BannerCateService {
      * @return PageInfo
      */
     PageInfo<BannerCate> pageList(BannerCate item, int pageIndex, int pageSize);
+
+    /***
+     * 分页显示
+     * @param item item
+     * @param pageIndex pageIndex
+     * @param pageSize pageSize
+     * @return PageInfo
+     */
+    PageInfo<BannerCateVo> pageListVo(BannerCate item, int pageIndex, int pageSize);
 
     /***
      * 列表

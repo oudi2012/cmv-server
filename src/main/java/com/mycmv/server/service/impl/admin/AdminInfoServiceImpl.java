@@ -18,7 +18,10 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 
@@ -84,6 +87,23 @@ public class AdminInfoServiceImpl implements AdminInfoService {
         List<AdminInfo> result = adminInfoMapper.listByUserNameList(list);
         logger.info("listByUserNameList result {}", JSON.toJSONString(result));
         return result;
+    }
+
+    @Override
+    public List<AdminInfo> listByUserIdList(List<Long> list) {
+        logger.info("listByUserIdList param {}", JSON.toJSONString(list));
+        List<AdminInfo> result = adminInfoMapper.listByUserIdList(list);
+        logger.info("listByUserIdList result {}", JSON.toJSONString(result));
+        return result;
+    }
+
+    @Override
+    public Map<Long, AdminInfo> mapByUserIdList(List<Long> list) {
+        List<AdminInfo> adminInfoList = this.listByUserIdList(list);
+        if (CollectionUtils.isEmpty(adminInfoList)) {
+            return new HashMap<>(0);
+        }
+        return adminInfoList.stream().collect(Collectors.toMap(AdminInfo::getId, Function.identity()));
     }
 
     @Override

@@ -10,6 +10,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class BannerVo extends Banner {
+    private String userName;
     private String cateName;
     private String cntTypeName;
     private String targetName;

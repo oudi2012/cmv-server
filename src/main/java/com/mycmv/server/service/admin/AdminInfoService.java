@@ -5,6 +5,7 @@ import com.mycmv.server.model.admin.entry.AdminInfo;
 import com.github.pagehelper.PageInfo;
 
 import java.util.List;
+import java.util.Map;
 
 /***
  * AdminInfoService
@@ -41,6 +42,20 @@ public interface AdminInfoService {
      * @return List
      */
     List<AdminInfo> listByUserNameList(List<String> list);
+
+    /***
+     * 列表
+     * @param list list
+     * @return List
+     */
+    List<AdminInfo> listByUserIdList(List<Long> list);
+
+    /***
+     * 列表
+     * @param list list
+     * @return Map
+     */
+    Map<Long, AdminInfo> mapByUserIdList(List<Long> list);
 
     /***
      * 编辑

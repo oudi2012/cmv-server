@@ -1,10 +1,16 @@
 package com.mycmv.server.service.impl.image;
 
+import com.mycmv.server.configuration.HwOssConfig;
+import com.mycmv.server.constants.CmvConstants;
+import com.mycmv.server.constants.LogConstants;
 import com.mycmv.server.service.image.ImageService;
+import com.obs.services.ObsClient;
+import com.obs.services.model.PutObjectResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.imageio.IIOException;
 import javax.imageio.ImageIO;
 import javax.imageio.ImageReader;
@@ -15,6 +21,7 @@ import java.awt.image.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.Iterator;
 
 
@@ -24,10 +31,25 @@ import java.util.Iterator;
 @Service
 public class ImageServiceImpl implements ImageService {
 
-    private static final Logger logger = LoggerFactory.getLogger(ImageServiceImpl.class);
+    private static final Logger logger = LoggerFactory.getLogger(LogConstants.SYS_LOG);
+
+    @Resource
+    private ObsClient obsClient;
+    @Resource
+    private HwOssConfig hwOssConfig;
+
+    @Override
+    public String uploadImage(File file) {
+        logger.info("=========>OSS文件上传开始：" + file.getName());
+        String dateStr = CmvConstants.YYYY_MM_DD.format(new Date());
+        PutObjectResult putObjectResult = obsClient.putObject(hwOssConfig.getBucketName(), file.getName(), file);
+        logger.info("putObjectResult url : " + putObjectResult.getObjectUrl());
+        return putObjectResult.getObjectUrl();
+    }
 
     @Override
     public BufferedImage readImage(File file) throws IOException {
+        logger.info("读取文件：{}", file.getName());
         return readImage(ImageIO.createImageInputStream(file));
     }
 
