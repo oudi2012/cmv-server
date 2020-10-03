@@ -1,7 +1,6 @@
 package com.mycmv.server.model.images.entry;
 
 import lombok.Data;
-
 import java.util.Date;
 
 /**
