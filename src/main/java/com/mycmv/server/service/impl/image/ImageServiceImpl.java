@@ -41,7 +41,6 @@ public class ImageServiceImpl implements ImageService {
     @Override
     public String uploadImage(File file) {
         logger.info("=========>OSS文件上传开始：" + file.getName());
-        String dateStr = CmvConstants.YYYY_MM_DD.format(new Date());
         PutObjectResult putObjectResult = obsClient.putObject(hwOssConfig.getBucketName(), file.getName(), file);
         logger.info("putObjectResult url : " + putObjectResult.getObjectUrl());
         return putObjectResult.getObjectUrl();

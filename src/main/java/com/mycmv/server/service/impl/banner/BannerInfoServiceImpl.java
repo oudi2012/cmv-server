@@ -87,7 +87,7 @@ public class BannerInfoServiceImpl implements BannerInfoService {
         List<String> cateCodeList = bannerStream.map(Banner::getCateCode).collect(Collectors.toList());
         Map<String, BannerCate> bannerCateMap = bannerCateService.mapByCodes(cateCodeList);
         List<BannerVo> bannerVoList = new ArrayList<>();
-        bannerStream.forEach(banner -> {
+        list.forEach(banner -> {
             BannerVo bannerVo = new BannerVo();
             BeanUtils.copyProperties(banner, bannerVo);
             if (bannerCateMap.containsKey(banner.getCateCode())) {
