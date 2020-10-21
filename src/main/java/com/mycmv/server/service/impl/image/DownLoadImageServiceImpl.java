@@ -5,9 +5,9 @@ import com.mycmv.server.service.image.ImageService;
 import com.mycmv.server.utils.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -30,7 +30,7 @@ public class DownLoadImageServiceImpl implements DownLoadImageService {
     private static final String CHAR_ASK = "?";
     private static final String CHAR_SPLIT = "/";
 
-    @Autowired
+    @Resource
     private ImageService imageService;
 
     @Override

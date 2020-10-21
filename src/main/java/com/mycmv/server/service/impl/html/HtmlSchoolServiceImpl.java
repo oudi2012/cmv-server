@@ -18,6 +18,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -40,9 +41,9 @@ public class HtmlSchoolServiceImpl implements HtmlSchoolService, HtmlDataService
     private static final int AREA_LENGTH_5 = 5;
     private static final int AREA_LENGTH_7 = 7;
 
-    @Autowired
+    @Resource
     private AreaInfoService areaInfoService;
-    @Autowired
+    @Resource
     private SchoolInfoService schoolInfoService;
 
     @Override

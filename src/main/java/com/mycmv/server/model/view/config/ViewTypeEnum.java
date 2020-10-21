@@ -5,11 +5,9 @@ package com.mycmv.server.model.view.config;
  * @author a
  */
 public enum ViewTypeEnum {
-
+    /** PHONE */
     PHONE(10, ""),
-    PAD(20, ""),
-    (),
-    PHONE();
+    PAD(20, "");
 
     private final int code;
     private final String name;
