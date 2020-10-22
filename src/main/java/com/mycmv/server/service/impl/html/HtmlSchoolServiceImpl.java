@@ -1,37 +1,17 @@
 package com.mycmv.server.service.impl.html;
 
-import com.alibaba.fastjson.JSON;
-import com.mycmv.server.model.students.entry.AreaInfo;
-import com.mycmv.server.model.students.entry.SchoolInfo;
-import com.mycmv.server.service.student.AreaInfoService;
 import com.mycmv.server.service.html.HtmlDataService;
 import com.mycmv.server.service.html.HtmlSchoolService;
-import com.mycmv.server.service.student.SchoolInfoService;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
-import org.springframework.util.ObjectUtils;
-import org.springframework.util.StringUtils;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 /***
  * @author a
  */
 @Service
-public class HtmlSchoolServiceImpl implements HtmlSchoolService, HtmlDataService {
+public class HtmlSchoolServiceImpl/* implements HtmlSchoolService, HtmlDataService*/ {
 
-    private static final Logger logger = LoggerFactory.getLogger(HtmlSchoolServiceImpl.class);
+    /*private static final Logger logger = LoggerFactory.getLogger(HtmlSchoolServiceImpl.class);
 
     private static final String school_list_href = "http://xuexiao.51sxue.com/slist/?t=6";
 
@@ -66,11 +46,11 @@ public class HtmlSchoolServiceImpl implements HtmlSchoolService, HtmlDataService
     }
 
 
-    /***
+    *//***
      * html转换为对象数据
      * @param span span
      * @return SchoolInfo
-     */
+     *//*
     private SchoolInfo fromElement(Element span) {
         if (ObjectUtils.isEmpty(span)) {
             return null;
@@ -120,5 +100,5 @@ public class HtmlSchoolServiceImpl implements HtmlSchoolService, HtmlDataService
         schoolInfo.setPinyin("1");
         logger.info("schoolInfo:{}", JSON.toJSONString(schoolInfo));
         return schoolInfo;
-    }
+    }*/
 }

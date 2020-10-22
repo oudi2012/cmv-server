@@ -3,10 +3,8 @@ package com.mycmv.server.service.impl.banner;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.mycmv.server.mapper.banner.BannerCateMapper;
-import com.mycmv.server.model.admin.entry.AdminInfo;
 import com.mycmv.server.model.banner.entry.BannerCate;
 import com.mycmv.server.model.banner.vo.BannerCateVo;
-import com.mycmv.server.service.admin.AdminInfoService;
 import com.mycmv.server.service.banner.BannerCateService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -27,8 +25,8 @@ public class BannerCateServiceImpl implements BannerCateService {
 
     @Resource
     private BannerCateMapper bannerCateMapper;
-    @Resource
-    private AdminInfoService adminInfoService;
+    /*@Resource
+    private AdminInfoService adminInfoService;*/
 
     @Override
     public List<BannerCate> list(BannerCate item) {
@@ -92,15 +90,15 @@ public class BannerCateServiceImpl implements BannerCateService {
             return new PageInfo<>();
         }
         List<Long> userIds = pageInfo.getList().stream().filter(a -> a.getUserId() != null).distinct().map(BannerCate::getUserId).collect(Collectors.toList());
-        Map<Long, AdminInfo> mapAdminList = adminInfoService.mapByUserIdList(userIds);
+        //Map<Long, AdminInfo> mapAdminList = adminInfoService.mapByUserIdList(userIds);
         PageInfo<BannerCateVo> pageVoInfo = new PageInfo<>();
         BeanUtils.copyProperties(pageInfo, pageVoInfo);
         pageVoInfo.setList(pageInfo.getList().stream().map(bannerCate -> {
             BannerCateVo bannerCateVo = new BannerCateVo();
             BeanUtils.copyProperties(bannerCate, bannerCateVo);
-            if (mapAdminList.containsKey(bannerCate.getUserId())) {
+            /*if (mapAdminList.containsKey(bannerCate.getUserId())) {
                 bannerCateVo.setUserName(mapAdminList.get(bannerCate.getUserId()).getUserName());
-            }
+            }*/
             return bannerCateVo;
         }).collect(Collectors.toList()));
         return pageVoInfo;
